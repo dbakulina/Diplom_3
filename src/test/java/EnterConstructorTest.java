@@ -4,9 +4,8 @@ import org.junit.Test;
 import pageObject.LoginPage;
 import pageObject.MainPage;
 import pageObject.PersonalAccount;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-public class EnterConstructor {
+public class EnterConstructorTest {
     @Before
     public void setup() {
         //Configuration.browser = "firefox";
@@ -22,17 +21,15 @@ public class EnterConstructor {
     public void EnterConstructor() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
-        mainPage.enterAccount.click();
+        mainPage.clickEnterAccount();
         LoginPage loginPage = page(LoginPage.class);
-        loginPage.emailInput.setValue("pa@ra.ram");
-        loginPage.passwordInput.setValue("123456");
-        loginPage.enter.click();
-        mainPage.personalAccount.click();
+        loginPage.login("pa@ra.ram","123456");
+        mainPage.clickPersonalAccount();
         //Test body
         PersonalAccount personalAccount = page(PersonalAccount.class);
-        personalAccount.constructor.click();
+        personalAccount.clickСonstructor();
         //Assertions
-        mainPage.makeUpBurger.shouldBe(visible);
+        mainPage.checkMakeUpBurgerIsVisible();
     }
 
     //Проверь переход по клику на логотип Stellar Burgers
@@ -40,16 +37,14 @@ public class EnterConstructor {
     public void EnterStellarBurgersLogo() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
-        mainPage.enterAccount.click();
+        mainPage.clickEnterAccount();
         LoginPage loginPage = page(LoginPage.class);
-        loginPage.emailInput.setValue("pa@ra.ram");
-        loginPage.passwordInput.setValue("123456");
-        loginPage.enter.click();
-        mainPage.personalAccount.click();
+        loginPage.login("pa@ra.ram","123456");
+        mainPage.clickPersonalAccount();
         //Test body
         PersonalAccount personalAccount = page(PersonalAccount.class);
-        personalAccount.stellarburgersLogo.click();
+        personalAccount.clickStellarBurgers();
         //Assertions
-        mainPage.makeUpBurger.shouldBe(visible);
+        mainPage.checkMakeUpBurgerIsVisible();
     }
 }

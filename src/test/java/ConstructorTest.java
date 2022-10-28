@@ -1,11 +1,9 @@
-import com.codeborne.selenide.Configuration;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pageObject.MainPage;
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-public class Constructor {
+public class ConstructorTest {
     @Before
     public void setup() {
         //Configuration.browser = "firefox";
@@ -23,9 +21,7 @@ public class Constructor {
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
         //Test body
         //Assertions
-        mainPage.buns.shouldHave(cssValue("color","rgba(255, 255, 255, 1)"));
-        mainPage.sauces.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
-        mainPage.fillings.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
+        mainPage.checkBunIsWhite();
     }
     //Проверь, что работают переходы к разделам:«Cоусы»
     @Test
@@ -33,11 +29,9 @@ public class Constructor {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
         //Test body
-        mainPage.traditional.scrollIntoView(false);
+        mainPage.scrollIntoTraditional();
         //Assertions
-        mainPage.sauces.shouldHave(cssValue("color","rgba(255, 255, 255, 1)"));
-        mainPage.buns.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
-        mainPage.fillings.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
+        mainPage.checkSauseIsWhite();
     }
     //Проверь, что работают переходы к разделам:«Начинки»
     @Test
@@ -45,10 +39,8 @@ public class Constructor {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
         //Test body
-        mainPage.fallenianTree.scrollIntoView(false);
+        mainPage.scrollIntoFallenianTree();
         //Assertions
-        mainPage.buns.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
-        mainPage.sauces.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
-        mainPage.fillings.shouldHave(cssValue("color","rgba(255, 255, 255, 1)"));
+        mainPage.checkFillingsIsWhite();
     }
 }

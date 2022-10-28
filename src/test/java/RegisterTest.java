@@ -1,15 +1,11 @@
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pageObject.LoginPage;
 import pageObject.MainPage;
 import pageObject.RegisterPage;
-import java.time.Duration;
-import static com.codeborne.selenide.Condition.interactable;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-public class Register {
+public class RegisterTest {
     @Before
     public void setup() {
         //Configuration.browser = "firefox";
@@ -25,31 +21,25 @@ public class Register {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
         //Test body
-        mainPage.personalAccount.click();
+        mainPage.clickPersonalAccount();
         LoginPage loginPage = page(LoginPage.class);
-        loginPage.register.shouldBe(interactable, Duration.ofSeconds(10)).click();
+        loginPage.clickRegister();
         RegisterPage registerPage = page(RegisterPage.class);
-        registerPage.nameInput.setValue("Иван");
-        registerPage.emailInput.setValue(RandomStringUtils.randomAlphanumeric(4) +"@ru.ru");
-        registerPage.passwordInput.setValue(RandomStringUtils.randomAlphanumeric(7));
-        registerPage.registerButton.click();
+        registerPage.successfulRegisterUser();
         //Assertions
-        loginPage.register.shouldBe(visible);
+        loginPage.checkRegisterVisible();
     }
     @Test
     public void UnsuccessfulRegistrationPasswordFiveSymbolsTest() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
         //Test body
-        mainPage.personalAccount.click();
+        mainPage.clickPersonalAccount();
         LoginPage loginPage = page(LoginPage.class);
-        loginPage.register.click();
+        loginPage.clickRegister();
         RegisterPage registerPage = page(RegisterPage.class);
-        registerPage.nameInput.setValue("Иван");
-        registerPage.emailInput.setValue(RandomStringUtils.randomAlphanumeric(4) +"@ru.ru");
-        registerPage.passwordInput.setValue(RandomStringUtils.randomAlphanumeric(5));
-        registerPage.registerButton.click();
+        registerPage.unsuccessfulRegisterUser();
         //Assertions
-        registerPage.wrongPassword.shouldBe(visible);
+        registerPage.checkWrongPasswordIsVisible();
     }
 }

@@ -1,11 +1,9 @@
-import com.codeborne.selenide.Configuration;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pageObject.*;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-public class EnterAccount {
+public class EnterAccountTest {
     @Before
     public void setup() {
         //Configuration.browser = "firefox";
@@ -22,13 +20,11 @@ public class EnterAccount {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
         //Test body
-        mainPage.enterAccount.click();
+        mainPage.clickEnterAccount();
         LoginPage loginPage = page(LoginPage.class);
-        loginPage.emailInput.setValue("pa@ra.ram");
-        loginPage.passwordInput.setValue("123456");
-        loginPage.enter.click();
+        loginPage.login("pa@ra.ram","123456");
         //Assertions
-        mainPage.makeUpBurger.shouldBe(visible);
+        mainPage.checkMakeUpBurgerIsVisible();
     }
     //вход через кнопку «Личный кабинет»
     @Test
@@ -36,46 +32,40 @@ public class EnterAccount {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
         //Test body
-        mainPage.personalAccount.click();
+        mainPage.clickPersonalAccount();
         LoginPage loginPage = page(LoginPage.class);
-        loginPage.emailInput.setValue("pa@ra.ram");
-        loginPage.passwordInput.setValue("123456");
-        loginPage.enter.click();
+        loginPage.login("pa@ra.ram","123456");
         //Assertions
-        mainPage.makeUpBurger.shouldBe(visible);
+        mainPage.checkMakeUpBurgerIsVisible();
     }
     //вход через кнопку в форме регистрации
     @Test
     public void EnterRegistrationForm() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
-        mainPage.personalAccount.click();
+        mainPage.clickPersonalAccount();
         LoginPage loginPage = page(LoginPage.class);
-        loginPage.register.click();
+        loginPage.clickRegister();
         //Test body
         RegisterPage registerPage = page(RegisterPage.class);
-        registerPage.enterButton.click();
-        loginPage.emailInput.setValue("pa@ra.ram");
-        loginPage.passwordInput.setValue("123456");
-        loginPage.enter.click();
+        registerPage.clickEnterButton();
+        loginPage.login("pa@ra.ram","123456");
         //Assertions
-        mainPage.makeUpBurger.shouldBe(visible);
+        mainPage.checkMakeUpBurgerIsVisible();
     }
     //вход через кнопку в форме восстановления пароля.
     @Test
     public void EnterRestorePasswordForm() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
-        mainPage.personalAccount.click();
+        mainPage.clickPersonalAccount();
         LoginPage loginPage = page(LoginPage.class);
-        loginPage.restorePassword.click();
+        loginPage.clickRestorePasswordr();
         //Test body
         ForgotPassword forgotPassword = page(ForgotPassword.class);
-        forgotPassword.enter.click();
-        loginPage.emailInput.setValue("pa@ra.ram");
-        loginPage.passwordInput.setValue("123456");
-        loginPage.enter.click();
+        forgotPassword.clickEnterButton();
+        loginPage.login("pa@ra.ram","123456");
         //Assertions
-        mainPage.makeUpBurger.shouldBe(visible);
+        mainPage.checkMakeUpBurgerIsVisible();
     }
 }

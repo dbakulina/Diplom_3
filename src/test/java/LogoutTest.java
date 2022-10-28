@@ -4,11 +4,8 @@ import org.junit.Test;
 import pageObject.LoginPage;
 import pageObject.MainPage;
 import pageObject.PersonalAccount;
-import java.time.Duration;
-import static com.codeborne.selenide.Condition.interactable;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-public class Logout {
+public class LogoutTest {
     @Before
     public void setup() {
         //Configuration.browser = "firefox";
@@ -23,16 +20,14 @@ public class Logout {
     public void Logout() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
-        mainPage.enterAccount.click();
+        mainPage.clickEnterAccount();
         LoginPage loginPage = page(LoginPage.class);
-        loginPage.emailInput.shouldBe(interactable, Duration.ofSeconds(10)).setValue("pa@ra.ram");
-        loginPage.passwordInput.setValue("123456");
-        loginPage.enter.click();
-        mainPage.personalAccount.click();
+        loginPage.login("pa@ra.ram","123456");
+        mainPage.clickPersonalAccount();
         //Test body
         PersonalAccount personalAccount = page(PersonalAccount.class);
-        personalAccount.logoutButton.click();
+        personalAccount.clickLogoutButton();
         //Assertions
-        loginPage.emailInput.shouldBe(visible);
+        loginPage.checkEmailInputIsVisible();
     }
 }
