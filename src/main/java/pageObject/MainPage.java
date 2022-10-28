@@ -51,21 +51,21 @@ public class MainPage {
     }
     //Проверка что раздел "Булки" выделен белым цветом
     public void checkBunIsWhite(){
-        buns.shouldHave(cssValue("color","rgba(255, 255, 255, 1)"));
-        sauces.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
-        fillings.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
+        buns.shouldHave(cssValue("color","rgba(255, 255, 255, 1)"),Duration.ofSeconds(10));
+        sauces.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"),Duration.ofSeconds(10));
+        fillings.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"),Duration.ofSeconds(10));
     }
     //Проверка что раздел "Соусы" выделен белым цветом
     public void checkSauseIsWhite(){
-        sauces.shouldHave(cssValue("color","rgba(255, 255, 255, 1)"));
-        buns.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
-        fillings.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
+        sauces.shouldHave(cssValue("color","rgba(255, 255, 255, 1)"),Duration.ofSeconds(10));
+        buns.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"),Duration.ofSeconds(10));
+        fillings.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"),Duration.ofSeconds(10));
     }
     //Проверка что раздел "Начинки" выделен белым цветом
-    public void checkFillingsIsWhite(){
-        buns.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
-        sauces.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"));
-        fillings.shouldHave(cssValue("color","rgba(255, 255, 255, 1)"));
+    public void checkFillingsIsWhite() {
+        buns.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"),Duration.ofSeconds(10));
+        sauces.shouldHave(cssValue("color","rgba(133, 133, 173, 1)"),Duration.ofSeconds(10));
+        fillings.shouldHave(cssValue("color","rgba(255, 255, 255, 1)"),Duration.ofSeconds(10));
     }
     //Метод который прокручивает до текста Соус Spicy-X
     public void scrollIntoTraditional(){

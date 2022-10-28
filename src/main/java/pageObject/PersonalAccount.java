@@ -15,7 +15,7 @@ public class PersonalAccount {
     @FindBy(how = How.XPATH, using = ".//p[contains(text(),'Конструктор')]")
     private SelenideElement constructor;
     //Логотип "stellarburgers"
-    @FindBy(how = How.XPATH, using = ".//header/nav[1]/div[1]/a[1]/*[1]")
+    @FindBy(how = How.XPATH, using = ".//div[@class = \"AppHeader_header__logo__2D0X2\"]/a")
     private SelenideElement stellarburgersLogo;
     //Кнопка Выход
     @FindBy(how = How.XPATH, using = ".//button[contains(text(),'Выход')]")

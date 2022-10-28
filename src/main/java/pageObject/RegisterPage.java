@@ -10,13 +10,13 @@ import static com.codeborne.selenide.Condition.visible;
 
 public class RegisterPage {
     //Поле ввода Имя
-    @FindBy(how = How.XPATH, using = ".//body/div[@id='root']/div[1]/main[1]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/input[1]")
+    @FindBy(how = How.XPATH, using = ".//fieldset[1]/div/div/input")
     private SelenideElement nameInput;
     //Поле ввода Email
-    @FindBy(how = How.XPATH, using = ".//body/div[@id='root']/div[1]/main[1]/div[1]/form[1]/fieldset[2]/div[1]/div[1]/input[1]")
+    @FindBy(how = How.XPATH, using = ".//fieldset[2]/div/div/input")
     private SelenideElement emailInput;
     //Поле ввода Пароль
-    @FindBy(how = How.XPATH, using = ".//body/div[@id='root']/div[1]/main[1]/div[1]/form[1]/fieldset[3]/div[1]/div[1]/input[1]")
+    @FindBy(how = How.XPATH, using = ".//input[@type='password']")
     private SelenideElement passwordInput;
     //Кнопка Зарегистрироваться
     @FindBy(how = How.XPATH, using = ".//button[contains(text(),'Зарегистрироваться')]")
