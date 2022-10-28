@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +18,7 @@ public class LogoutTest {
         closeWebDriver();
     }
     @Test
+    @DisplayName("Проверить, что выход из личного кабинета")
     public void Logout() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);

@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,8 +17,8 @@ public class EnterConstructorTest {
     public void tearDown() {
         closeWebDriver();
     }
-    //Проверь переход по клику на «Конструктор»
     @Test
+    @DisplayName("Проверить, что работает переход по клику на «Конструктор»")
     public void EnterConstructor() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
@@ -32,8 +33,8 @@ public class EnterConstructorTest {
         mainPage.checkMakeUpBurgerIsVisible();
     }
 
-    //Проверь переход по клику на логотип Stellar Burgers
     @Test
+    @DisplayName("Проверить, что работает переход по клику на логотип Stellar Burgers")
     public void EnterStellarBurgersLogo() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);

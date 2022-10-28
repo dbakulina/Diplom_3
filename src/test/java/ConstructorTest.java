@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,8 +15,9 @@ public class ConstructorTest {
     public void tearDown() {
         closeWebDriver();
     }
-    //Проверь, что работают переходы к разделам:«Булки»
+
     @Test
+    @DisplayName("Проверить, что работает переход к разделу Булки")
     public void goToTheBunsSection() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
@@ -23,8 +25,9 @@ public class ConstructorTest {
         //Assertions
         mainPage.checkBunIsWhite();
     }
-    //Проверь, что работают переходы к разделам:«Cоусы»
+
     @Test
+    @DisplayName("Проверить, что работает переход к разделу Соусы")
     public void goToTheSousesSection() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
@@ -33,8 +36,9 @@ public class ConstructorTest {
         //Assertions
         mainPage.checkSauseIsWhite();
     }
-    //Проверь, что работают переходы к разделам:«Начинки»
+
     @Test
+    @DisplayName("Проверить, что работает переход к разделу Начинки")
     public void goToTheFillingsSection() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);

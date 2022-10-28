@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,8 +15,9 @@ public class EnterAccountTest {
     public void tearDown() {
         closeWebDriver();
     }
-    //вход по кнопке «Войти в аккаунт» на главной
+
     @Test
+    @DisplayName("Проверить, что работает вход по кнопке «Войти в аккаунт» на главной")
     public void EnterAccountMainPage() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
@@ -26,8 +28,9 @@ public class EnterAccountTest {
         //Assertions
         mainPage.checkMakeUpBurgerIsVisible();
     }
-    //вход через кнопку «Личный кабинет»
+
     @Test
+    @DisplayName("Проверить, что работает ввход через кнопку «Личный кабинет»")
     public void EnterPersonalArea() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
@@ -38,8 +41,9 @@ public class EnterAccountTest {
         //Assertions
         mainPage.checkMakeUpBurgerIsVisible();
     }
-    //вход через кнопку в форме регистрации
+
     @Test
+    @DisplayName("Проверить, что работает вход через кнопку в форме регистрации")
     public void EnterRegistrationForm() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
@@ -53,8 +57,9 @@ public class EnterAccountTest {
         //Assertions
         mainPage.checkMakeUpBurgerIsVisible();
     }
-    //вход через кнопку в форме восстановления пароля.
+
     @Test
+    @DisplayName("Проверить, что работает вход через кнопку в форме восстановления пароля")
     public void EnterRestorePasswordForm() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);

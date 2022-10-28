@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +18,7 @@ public class RegisterTest {
         closeWebDriver();
     }
     @Test
+    @DisplayName("Проверить, что работает регистрация с валидными данными")
     public void SuccessfulRegistrationTest() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
@@ -30,6 +32,7 @@ public class RegisterTest {
         loginPage.checkRegisterVisible();
     }
     @Test
+    @DisplayName("Проверить, что при регистрации с невалидными данными появляется ошибка")
     public void UnsuccessfulRegistrationPasswordFiveSymbolsTest() {
         //Setup
         MainPage mainPage = open(Config.STELLARBURGERS_BASE_URL, MainPage.class);
